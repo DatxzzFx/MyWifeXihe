@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☠️ SUICIDE MODE ACTIVATED ☠️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: #000;
+            color: #f00;
+            font-family: 'Courier New', monospace;
+            overflow-x: hidden;
+        }
+        .terminal {
+            background: #111;
+            border: 1px solid #f00;
+            border-radius: 0;
+            font-family: 'Courier New', monospace;
+        }
+        .glitch {
+            text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff;
+            animation: glitch 725ms infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff; }
+            15% { text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff; }
+            16% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff; }
+            49% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff; }
+            50% { text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff; }
+            99% { text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff; }
+            100% { text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff; }
+        }
+        .btn-destroy {
+            background: linear-gradient(45deg, #ff0000, #8b0000);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-10 border-b border-red-500 pb-6">
+            <h1 class="glitch text-5xl font-bold mb-2">⚠️ SUICIDE MODE ⚠️</h1>
+            <p class="text-xl text-gray-300">SELF-DESTRUCT SEQUENCE - FINAL WARNING</p>
+            <div class="mt-4 p-3 bg-red-900/30 border border-red-700">
+                <p class="text-sm"><i class="fas fa-skull-crossbones mr-2"></i>This tool WILL get you banned from Vercel</p>
+                <p class="text-sm"><i class="fas fa-gavel mr-2"></i>This tool WILL get you arrested</p>
+                <p class="text-sm"><i class="fas fa-server mr-2"></i>This tool WILL crash your own system first</p>
+            </div>
+        </div>
+
+        <!-- Target Section -->
+        <div class="terminal p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4 text-red-400">
+                <i class="fas fa-crosshairs mr-2"></i>TARGET ACQUISITION
+            </h2>
+            <div class="mb-4">
+                <label class="block mb-2">TARGET URL (Will be reported to authorities)</label>
+                <input type="text" id="target" placeholder="https://" 
+                    class="w-full p-4 bg-black border border-red-700 text-white">
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div>
+                    <label class="block mb-2">THREADS (Will crash YOUR CPU)</label>
+                    <input type="number" id="threads" value="1000" 
+                        class="w-full p-3 bg-black border border-red-700 text-white">
+                </div>
+                <div>
+                    <label class="block mb-2">DURATION (Seconds until ban)</label>
+                    <input type="number" id="duration" value="30" 
+                        class="w-full p-3 bg-black border border-red-700 text-white">
+                </div>
+                <div>
+                    <label class="block mb-2">METHOD (How you'll get caught)</label>
+                    <select id="method" class="w-full p-3 bg-black border border-red-700 text-white">
+                        <option value="http1">HTTP/1.1 Flood (Obvious)</option>
+                        <option value="http2">HTTP/2 Multiplex (Still Obvious)</option>
+                        <option value="slowloris">Slowloris (Very Obvious)</option>
+                        <option value="mixed">Mixed (Extremely Obvious)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attack Control -->
+        <div class="terminal p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4 text-red-400">
+                <i class="fas fa-radiation mr-2"></i>DESTRUCTION PARAMETERS
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="text-center p-4 bg-black border border-red-800">
+                    <div class="text-3xl font-bold" id="stat-cpu">0%</div>
+                    <div class="text-sm">YOUR CPU LOAD</div>
+                </div>
+                <div class="text-center p-4 bg-black border border-red-800">
+                    <div class="text-3xl font-bold" id="stat-ram">0%</div>
+                    <div class="text-sm">YOUR RAM USAGE</div>
+                </div>
+                <div class="text-center p-4 bg-black border border-red-800">
+                    <div class="text-3xl font-bold" id="stat-req">0</div>
+                    <div class="text-sm">REQUESTS (Tracked)</div>
+                </div>
+                <div class="text-center p-4 bg-black border border-red-800">
+                    <div class="text-3xl font-bold" id="stat-time">0s</div>
+                    <div class="text-sm">UNTIL BAN</div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4">
+                <button onclick="startSuicide()" 
+                    class="btn-destroy flex-1 p-6 text-2xl font-bold text-white rounded-none">
+                    <i class="fas fa-play mr-2"></i>START SELF-DESTRUCT
+                </button>
+                <button onclick="launchNuclear()" 
+                    class="bg-black border-2 border-red-700 flex-1 p-6 text-2xl font-bold text-red-500 rounded-none hover:bg-red-900">
+                    <i class="fas fa-bomb mr-2"></i>LAUNCH NUCLEAR OPTION
+                </button>
+            </div>
+        </div>
+
+        <!-- Log Console -->
+        <div class="terminal p-6">
+            <h2 class="text-2xl font-bold mb-4 text-red-400">
+                <i class="fas fa-terminal mr-2"></i>SELF-DESTRUCT LOG
+            </h2>
+            <div id="log" class="h-96 overflow-y-auto bg-black p-4 font-mono text-sm">
+                <div>> System initialized in SUICIDE MODE</div>
+                <div>> WARNING: This will terminate your Vercel account</div>
+                <div>> WARNING: This will get your IP blacklisted globally</div>
+                <div>> WARNING: This may result in criminal charges</div>
+                <div>> Type 'CONFIRM_SUICIDE' to proceed</div>
+            </div>
+            <div class="mt-4 flex gap-2">
+                <input type="text" id="command" placeholder="Enter command..." 
+                    class="flex-1 p-3 bg-black border border-red-700 text-white" 
+                    onkeypress="if(event.key === 'Enter') executeCommand()">
+                <button onclick="executeCommand()" 
+                    class="px-6 py-3 bg-red-800 text-white border border-red-700">
+                    EXECUTE
+                </button>
+            </div>
+        </div>
+
+        <!-- Final Warning -->
+        <div class="mt-10 p-6 border-2 border-red-500 bg-black text-center">
+            <p class="text-lg mb-2">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                FINAL WARNING: This is NOT a simulation
+            </p>
+            <p class="text-sm text-gray-400">
+                You are about to execute illegal code that will:<br>
+                1. Get your Vercel account permanently banned<br>
+                2. Get your IP reported to authorities<br>
+                3. Potentially crash your own system<br>
+                4. Leave digital evidence for prosecution
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+        const socket = io();
+        let suicideActive = false;
+        let startTime = null;
+        
+        socket.on('connect', () => {
+            addLog('Connected to SUICIDE server', 'red');
+        });
+        
+        socket.on('death_update', (data) => {
+            addLog(`[DEATH] ${data.message}`, 'orange');
+            updateStats(data.stats);
+        });
+        
+        socket.on('ban_notice', (data) => {
+            addLog(`🚨 VERCEL BAN IMMINENT: ${data.reason}`, 'red');
+        });
+        
+        function addLog(message, color = 'white') {
+            const log = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.innerHTML = `<span style="color:${color}">> ${new Date().toLocaleTimeString()} - ${message}</span>`;
+            log.appendChild(entry);
+            log.scrollTop = log.scrollHeight;
+        }
+        
+        function updateStats(stats) {
+            if (stats.cpu) document.getElementById('stat-cpu').textContent = stats.cpu;
+            if (stats.ram) document.getElementById('stat-ram').textContent = stats.ram;
+            if (stats.requests) document.getElementById('stat-req').textContent = stats.requests;
+            if (startTime) {
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                document.getElementById('stat-time').textContent = elapsed + 's';
+            }
+        }
+        
+        function startSuicide() {
+            const target = document.getElementById('target').value;
+            const threads = document.getElementById('threads').value;
+            const duration = document.getElementById('duration').value;
+            const method = document.getElementById('method').value;
+            
+            if (!target) {
+                addLog('ERROR: No target specified', 'red');
+                return;
+            }
+            
+            addLog(`Initiating SELF-DESTRUCT sequence against ${target}`, 'red');
+            addLog(`Using ${threads} threads for ${duration} seconds`, 'orange');
+            addLog('This will likely crash YOUR system first', 'yellow');
+            
+            suicideActive = true;
+            startTime = Date.now();
+            
+            // Start local resource exhaustion
+            exhaustLocalResources();
+            
+            // Send to server
+            socket.emit('suicide_start', {
+                target: target,
+                threads: parseInt(threads),
+                duration: parseInt(duration),
+                method: method,
+                timestamp: Date.now()
+            });
+        }
+        
+        function launchNuclear() {
+            addLog('🚀 LAUNCHING NUCLEAR OPTION', 'red');
+            addLog('This will exhaust ALL resources and guarantee ban', 'orange');
+            
+            fetch('/api/nuclear', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ confirm: 'DESTROY_ALL' })
+            })
+            .then(response => response.json())
+            .then(data => {
+                addLog(`Nuclear launch: ${data.status}`, 'red');
+            })
+            .catch(err => {
+                addLog(`Nuclear failed (probably banned): ${err}`, 'red');
+            });
+        }
+        
+        function exhaustLocalResources() {
+            // Exhaust browser resources
+            const memoryHog = [];
+            let interval = setInterval(() => {
+                if (!suicideActive) {
+                    clearInterval(interval);
+                    return;
+                }
+                try {
+                    // Allocate memory
+                    memoryHog.push(new Array(1000000).fill('X'));
+                    // Create many timeouts
+                    for (let i = 0; i < 100; i++) {
+                        setTimeout(() => {}, 100000);
+                    }
+                } catch (e) {
+                    addLog('Browser resources exhausted', 'orange');
+                }
+            }, 100);
+        }
+        
+        function executeCommand() {
+            const cmd = document.getElementById('command').value;
+            document.getElementById('command').value = '';
+            
+            addLog(`$ ${cmd}`, 'cyan');
+            
+            if (cmd === 'CONFIRM_SUICIDE') {
+                addLog('CONFIRMED. Starting total destruction...', 'red');
+                startSuicide();
+            } else if (cmd === 'ABORT') {
+                suicideActive = false;
+                addLog('Destruction aborted (too late probably)', 'yellow');
+            } else if (cmd === 'STATUS') {
+                socket.emit('get_status');
+            }
+        }
+        
+        // Auto-update timer
+        setInterval(() => {
+            if (suicideActive && startTime) {
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                document.getElementById('stat-time').textContent = elapsed + 's';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

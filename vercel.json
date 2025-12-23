@@ -1,0 +1,27 @@
+{
+  "functions": {
+    "api/attack.js": {
+      "maxDuration": 60,
+      "memory": 3008,
+      "maxDuration": 60
+    },
+    "api/nuclear.js": {
+      "maxDuration": 90,
+      "memory": 3008
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Suicide-Mode", "value": "ACTIVATED" },
+        { "key": "X-Destruct-Sequence", "value": "ENABLED" }
+      ]
+    }
+  ],
+  "regions": ["sin1"],
+  "env": {
+    "SUICIDE_MODE": "true",
+    "DESTROY_ON_START": "false"
+  }
+}
